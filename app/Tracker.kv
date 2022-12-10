@@ -1,0 +1,64 @@
+WindowManager:
+    MainWindow:
+    SurveyWindow:
+
+<MainWindow>:
+    name: "main"
+
+    AnchorLayout:
+        anchor_x: "center"
+        anchor_y: "bottom"
+
+        Button:
+            text: "New Entry"
+            size_hint: 1, .1 
+            on_release:
+                app.root.current = "survey"
+                root.manager.transition.direction = "left"
+
+
+<SurveyWindow>:
+    name: "survey"
+
+    BoxLayout:
+        size: self.size
+        id: bl
+        orientation: 'vertical'
+        padding: 10, 10
+        row_default_height: '48dp'
+        row_force_default: True
+
+        AnchorLayout:
+            anchor_x: "left"
+            anchor_y: "top"
+
+            Button:
+                text: "Back"
+
+                size_hint: .25, .1
+
+                on_release:
+                    app.root.current = "main"
+                    root.manager.transition.direction = "right"
+
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            
+            GridLayout:
+                cols: 1
+                
+        AnchorLayout:
+            anchor_x: "center"
+            anchor_y: "bottom"
+
+            Button:
+                text: "Submit"
+
+                size_hint: 1, .1
+
+                on_release:
+                    app.root.current = "main"
+                    root.manager.transition.direction = "right"
+
+                
